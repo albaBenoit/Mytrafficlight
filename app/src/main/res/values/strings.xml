@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My traffic light</string>
+    <string name="car_model">Car Model</string>
+    <string name="car_model_error_message">Car model not valid</string>
+    <string name="home_screen_validate_button">Validate</string>
+    <string name="traffic_light_screen_start_button">Start</string>
+    <string name="traffic_light_screen_stop_button">Stop</string>
+</resources>
