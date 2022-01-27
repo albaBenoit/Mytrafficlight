@@ -24,11 +24,10 @@ class StartTrafficLightUseCaseTest : KoinTest {
         modules(listOf(myTrafficLightModule))
     }
 
-
     @Test
     fun checkFirstColorIterationTrafficLight() {
         runBlocking {
-            launch(Dispatchers.IO) {
+            launch(Dispatchers.Default) {
                 startTrafficLightUseCase()
             }
 
@@ -44,7 +43,7 @@ class StartTrafficLightUseCaseTest : KoinTest {
     @Test
     fun checkSecondColorIterationTrafficLight() {
         runBlocking {
-            launch(Dispatchers.IO) {
+            launch(Dispatchers.Default) {
                 startTrafficLightUseCase()
             }
             val timeBefore = System.currentTimeMillis()
@@ -69,7 +68,7 @@ class StartTrafficLightUseCaseTest : KoinTest {
     @Test
     fun checkThirdColorIterationTrafficLight() {
         runBlocking {
-            launch(Dispatchers.IO) {
+            launch(Dispatchers.Default) {
                 startTrafficLightUseCase()
             }
             val timeBefore = System.currentTimeMillis()
@@ -95,7 +94,7 @@ class StartTrafficLightUseCaseTest : KoinTest {
     @Test
     fun checkFourthColorIterationTrafficLight() {
         runBlocking {
-            launch(Dispatchers.IO) {
+            launch(Dispatchers.Default) {
                 startTrafficLightUseCase()
             }
             val timeBefore = System.currentTimeMillis()

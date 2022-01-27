@@ -6,6 +6,7 @@ import com.movify.mytrafficlight.entities.TrafficLight
 import com.movify.mytrafficlight.usecases.GetTrafficLightUseCase
 import com.movify.mytrafficlight.usecases.StartTrafficLightUseCase
 import com.movify.mytrafficlight.usecases.StopTrafficLightUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -34,7 +35,7 @@ class TrafficLightViewModel(
     }
 
     private fun startTrafficLight() {
-        job = viewModelScope.launch {
+        job = viewModelScope.launch(Dispatchers.Default) {
             getTrafficLightUseCase().collect {
                 do {
                     startTrafficLightUseCase()

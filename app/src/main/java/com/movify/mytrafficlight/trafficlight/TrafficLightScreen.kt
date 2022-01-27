@@ -1,5 +1,8 @@
 package com.movify.mytrafficlight.trafficlight
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -50,20 +53,27 @@ fun TrafficLightScreen(carModel: String) {
         ) {
 
             trafficLightState.value.currentColors.forEach { trafficLightColor ->
+
+                val animatedColor =
+                    animateColorAsState(
+                        if (trafficLightColor.active) {
+                            colorResource(trafficLightColor.activeColorId)
+                        } else {
+                            colorResource(trafficLightColor.inactiveColorId)
+                        },
+                        animationSpec = tween(
+                            durationMillis = 200,
+                            delayMillis = 0,
+                            easing = LinearOutSlowInEasing
+                        )
+                    )
+
                 Box(
                     modifier = Modifier
                         .padding(12.dp)
                         .size(110.dp)
                         .clip(CircleShape)
-                        .background(
-                            colorResource(
-                                if (trafficLightColor.active) {
-                                    trafficLightColor.activeColorId
-                                } else {
-                                    trafficLightColor.inactiveColorId
-                                }
-                            )
-                        )
+                        .background(animatedColor.value)
                 )
             }
         }
